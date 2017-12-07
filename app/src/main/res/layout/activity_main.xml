@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="navneet.com.quizrest.MainActivity">
+
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/card_recycler_view"-->
+        <!--android:scrollbars="vertical"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="4dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/stats"
+            android:background="#00FFFF"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/trophy"
+                android:background="@null"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+            <TextView
+                android:padding="10dp"
+                android:text="676"
+                android:fontFamily="monospace"
+                android:textSize="16dp"
+                android:layout_width="50dp"
+                android:layout_height="40dp" />
+            <ImageButton
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/badge"
+                android:background="@null"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/time"
+                android:padding="10dp"
+                android:text="144"
+                android:textSize="16dp"
+                android:fontFamily="monospace"
+                android:layout_width="50dp"
+                android:layout_height="40dp" />
+            <ImageButton
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/trophy"
+                android:background="@null"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+            <TextView
+                android:padding="10dp"
+                android:text="25"
+                android:textSize="16dp"
+                android:fontFamily="monospace"
+                android:layout_width="50dp"
+                android:layout_height="40dp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/q_layout"
+            android:layout_below="@+id/stats"
+            android:background="#FFA500"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+    <TextView
+        android:padding="10dp"
+        android:id="@+id/question"
+        android:text="This is a sample question,This is a sample question,This is a sample question ?"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--<TextView-->
+        <!--android:padding="10dp"-->
+        <!--android:layout_below="@+id/question"-->
+        <!--android:id="@+id/answer"-->
+        <!--android:textStyle="bold"-->
+        <!--android:text="This is a sample answer"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content" />-->
+        </RelativeLayout>
+            <android.support.v7.widget.RecyclerView
+                android:layout_below="@+id/q_layout"
+                android:id="@+id/card_recycler_view"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+    <Button
+        android:id="@+id/time_up"
+        android:text="TIME'S UP !!!"
+        android:visibility="gone"
+        android:background="@color/colorAccent"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
