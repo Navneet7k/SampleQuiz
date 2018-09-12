@@ -17,14 +17,15 @@ import java.util.ArrayList;
  */
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
-    private ArrayList<Result> android;
-    private ArrayList<Result> websites;
-    private ArrayList<Result> articles;
+    private ArrayList<User> articles=new ArrayList<>();
     private Context context;
+    private String email;
 
-    public DataAdapter(ArrayList<Result> articles, Context context) {
+    public DataAdapter(ArrayList<User> articles,Context context,String email) {
         this.context=context;
-        this.articles=articles;}
+        this.articles=articles;
+        this.email=email;
+    }
 
     @Override
     public DataAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
@@ -36,18 +37,16 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     public void onBindViewHolder(DataAdapter.ViewHolder viewHolder, final int i) {
 
 
+        if (articles.get(i).getEmail().equals(email)) {
+            viewHolder.itemView.setBackgroundColor(context.getResources().getColor(R.color.correctAnswer));
+        }
 
-        viewHolder.tv_name.setText(articles.get(i).getQuestion());
-        viewHolder.tv_version.setText(articles.get(i).getCorrectAnswer());
-//        final String name=articles.get(i).getTitle();
-//        final String author=articles.get(i).getAuthor();
-//        final String image=articles.get(i).getUrlToImage();
-//        final String date=articles.get(i).getPublishedAt();
-//        final String desc=articles.get(i).getDescription();
-//        final String more=articles.get(i).getUrl();
-//
-//        viewHolder.tv_version.setText(articles.get(i).getPublishedAt());
-//        Picasso.with(context).load(articles.get(i).getUrlToImage()).into(viewHolder.img);
+        if (i==0)
+        viewHolder.leader.setVisibility(View.VISIBLE);
+
+        viewHolder.tv_name.setText(articles.get(i).getUsername());
+        viewHolder.tv_version.setText(articles.get(i).getHighScore());
+        viewHolder.right.setText(articles.get(i).getTotalCorrect());
 
     }
 
@@ -57,16 +56,16 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView tv_name,tv_version,tv_api_level;
+        private TextView tv_name,tv_version,right;
+        private ImageView leader;
 
 
-        private ImageView img;
         public ViewHolder(View view) {
             super(view);
-            img=(ImageView)view.findViewById(R.id.img);
             tv_name = (TextView)view.findViewById(R.id.tv_name);
             tv_version = (TextView)view.findViewById(R.id.tv_version);
-            //     tv_api_level = (TextView)view.findViewById(R.id.tv_api_level);
+            right = (TextView)view.findViewById(R.id.right);
+            leader = (ImageView) view.findViewById(R.id.leader);
 
         }
     }

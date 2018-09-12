@@ -36,7 +36,7 @@ public class LiveDataTimerViewModel extends ViewModel {
 
     public LiveDataTimerViewModel() {
         mInitialTime = SystemClock.elapsedRealtime();
-        Timer timer = new Timer();
+        final Timer timer = new Timer();
 
         // Update the elapsed time every second.
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -44,7 +44,12 @@ public class LiveDataTimerViewModel extends ViewModel {
             public void run() {
                 final long newValue = (SystemClock.elapsedRealtime() - mInitialTime) / 1000;
                 // setValue() cannot be called from a background thread so post to main thread.
-                mElapsedTime.postValue(newValue);
+                if (newValue==10){
+                    timer.cancel();
+                    mElapsedTime.postValue((long) 0);
+                } else {
+                    mElapsedTime.postValue(newValue);
+                }
             }
         }, ONE_SECOND, ONE_SECOND);
 

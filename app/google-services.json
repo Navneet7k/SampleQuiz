@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "314895209853",
+    "firebase_url": "https://fun-quiz-24998802.firebaseio.com",
+    "project_id": "fun-quiz-24998802",
+    "storage_bucket": "fun-quiz-24998802.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314895209853:android:56baa7df6ac40373",
+        "android_client_info": {
+          "package_name": "navneet.com.quizrest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "314895209853-n50vd7a4kheen0hmum4e5rpb0tdiq2pt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "navneet.com.quizrest",
+            "certificate_hash": "187690d75b28991bf9b756614b366945edc074ae"
+          }
+        },
+        {
+          "client_id": "314895209853-hh4ejr6sumu2c8ipq1n37nj1c7ecg3sr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZDwsNHwdOlAXd--F0jP6qa3bbrk8K0Tg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "314895209853-hh4ejr6sumu2c8ipq1n37nj1c7ecg3sr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

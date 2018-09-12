@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet_new"
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="true"
+    android:fillViewport="true"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+    <LinearLayout
+        android:id="@+id/root_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:padding="5dp"
+                    android:id="@+id/title"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    android:text="Onward Journey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/journey"
+                    android:layout_below="@+id/title"
+                    android:layout_centerInParent="true"
+                    android:maxLines="2"
+                    android:text="From BAN 6.00PM to KOCHI 7.00AM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/nos"
+                    android:layout_below="@+id/journey"
+                    android:textAlignment="center"
+                    android:layout_centerInParent="true"
+                    android:text="NO SEATS SELECTED"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.RecyclerView
+            android:padding="10dp"
+            android:id="@+id/recyclerViewBottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+        <TextView
+            android:id="@+id/book_seat"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#009688"
+            android:textStyle="bold"
+            android:layout_gravity="bottom"
+            android:textAlignment="center"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:text="BOOK NOW"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,6 +11,11 @@
         <!--android:scrollbars="vertical"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent"/>-->
+    <RelativeLayout
+        android:id="@+id/quiz_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
@@ -22,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <LinearLayout
+            android:gravity="center"
             android:id="@+id/stats"
             android:background="#00FFFF"
             android:padding="10dp"
@@ -29,43 +35,88 @@
             android:layout_height="wrap_content">
             <ImageButton
                 android:layout_marginLeft="15dp"
-                android:src="@drawable/trophy"
+                android:src="@drawable/question"
                 android:background="@null"
-                android:layout_width="40dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp" />
             <TextView
-                android:padding="10dp"
-                android:text="676"
+                android:id="@+id/que_count"
+                android:padding="7dp"
+                android:text="0"
                 android:fontFamily="monospace"
                 android:textSize="16dp"
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp" />
             <ImageButton
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/badge"
+                android:id="@+id/clock"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/timeup"
                 android:background="@null"
-                android:layout_width="40dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp" />
             <TextView
                 android:id="@+id/time"
-                android:padding="10dp"
-                android:text="144"
+                android:padding="7dp"
+                android:text="10"
+                android:textStyle="bold"
                 android:textSize="16dp"
+                android:textColor="#FF0000"
                 android:fontFamily="monospace"
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
             <ImageButton
-                android:layout_marginLeft="20dp"
+                android:id="@+id/trophy"
+                android:layout_marginLeft="15dp"
                 android:src="@drawable/trophy"
                 android:background="@null"
-                android:layout_width="40dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp" />
+
             <TextView
-                android:padding="10dp"
-                android:text="25"
+                android:layout_toRightOf="@+id/trophy"
+                android:id="@+id/points"
+                android:padding="7dp"
+                android:text="0"
                 android:textSize="16dp"
                 android:fontFamily="monospace"
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+                <TextView
+                    android:layout_toRightOf="@+id/trophy"
+                    android:id="@+id/score"
+                    android:padding="4dp"
+                    android:visibility="gone"
+                    android:textColor="#ffffff"
+                    android:alpha="0.7"
+                    android:textStyle="bold"
+                    android:background="@drawable/oval_dr"
+                    android:text=" +3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+            </RelativeLayout>
+
+            <ImageButton
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/right"
+                android:background="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+            <TextView
+                android:id="@+id/correct_count"
+                android:padding="7dp"
+                android:text="0"
+                android:textColor="#008000"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:fontFamily="monospace"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp" />
         </LinearLayout>
 
@@ -79,9 +130,12 @@
     <TextView
         android:padding="10dp"
         android:id="@+id/question"
-        android:text="This is a sample question,This is a sample question,This is a sample question ?"
+        android:text=""
+        android:fontFamily="monospace"
+        android:textSize="24sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
 
     <!--<TextView-->
         <!--android:padding="10dp"-->
@@ -92,20 +146,63 @@
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="wrap_content" />-->
         </RelativeLayout>
-            <android.support.v7.widget.RecyclerView
+            <ProgressBar
+                android:id="@+id/progress_line"
                 android:layout_below="@+id/q_layout"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <android.support.v7.widget.RecyclerView
+                android:layout_below="@+id/progress_line"
                 android:id="@+id/card_recycler_view"
                 android:scrollbars="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </RelativeLayout>
     </android.support.v7.widget.CardView>
+    <ImageView
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/card_view"
+        android:id="@+id/response"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <Button
         android:id="@+id/time_up"
-        android:text="TIME'S UP !!!"
         android:visibility="gone"
+        android:text="TIME'S UP !!!"
+        android:padding="10dp"
+        android:drawableEnd="@drawable/skip"
+        android:drawableRight="@drawable/skip"
         android:background="@color/colorAccent"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-</RelativeLayout>
+
+    <ProgressBar
+        android:layout_below="@+id/card_view"
+        android:id="@+id/progress"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <include layout="@layout/bottom_sheet"></include>
+
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/switch_cat"-->
+        <!--android:layout_gravity="end|center"-->
+        <!--android:src="@android:drawable/arrow_up_float"-->
+        <!--android:layout_margin="10dp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+    <TextView
+        android:id="@+id/error_view"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:fontFamily="monospace"
+        android:textSize="24sp"
+        android:text="Oops, Please Check Internet Connection!"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</android.support.design.widget.CoordinatorLayout>

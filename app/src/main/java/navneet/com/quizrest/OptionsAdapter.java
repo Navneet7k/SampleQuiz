@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,12 +26,16 @@ public class OptionsAdapter extends RecyclerView.Adapter<OptionsAdapter.ViewHold
     private String correct;
     private int idItem = 0;
     private OptionSelected optionSelected;
+    private boolean checked,showAns,isFreezed;
 
-    public OptionsAdapter(ArrayList<String> option, Context context,String correct,OptionSelected optionSelected) {
+    public OptionsAdapter(ArrayList<String> option, Context context,String correct,OptionSelected optionSelected,boolean checked,boolean showAns,boolean isFreezed) {
         this.context=context;
         this.option=option;
         this.correct=correct;
         this.optionSelected=optionSelected;
+        this.checked=checked;
+        this.showAns=showAns;
+        this.isFreezed=isFreezed;
     }
 
     @Override
@@ -41,16 +46,43 @@ public class OptionsAdapter extends RecyclerView.Adapter<OptionsAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(final OptionsAdapter.ViewHolder viewHolder, final int i) {
-        viewHolder.tv_name.setText(option.get(i));
+        viewHolder.tv_name.setText(Html.fromHtml(option.get(i)));
+        if (checked){
+            if (!option.get(i).equals(correct)){
+                viewHolder.itemView.setEnabled(false);
+//                viewHolder.itemView.setBackgroundColor(context.getResources().getColor(R.color.wrongAnswer));
+            } else {
+                viewHolder.itemView.setEnabled(false);
+                viewHolder.itemView.setBackgroundColor(context.getResources().getColor(R.color.correctAnswer));
+            }
+        }
+
+        if (isFreezed){
+            if (option.get(i).equals(correct)) {
+                viewHolder.itemView.setEnabled(false);
+                Toast.makeText(context, "Sorry Timeout!!", Toast.LENGTH_SHORT).show();
+            } else {
+                viewHolder.itemView.setEnabled(false);
+            }
+        }
+
+        if (showAns){
+            if (option.get(i).equals(correct)){
+                viewHolder.itemView.setBackgroundColor(context.getResources().getColor(R.color.correctAnswer));
+            }
+        }
+
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (option.get(i).equals(correct)){
+                    checked=true;
                     Toast.makeText(context,"CORRECT ANSWER :)",Toast.LENGTH_SHORT).show();
                     viewHolder.itemView.setBackgroundColor(context.getResources().getColor(R.color.correctAnswer));
                     viewHolder.itemView.setClickable(false);
                     optionSelected.onOptionCorrect();
                 } else {
+                    checked=true;
                     viewHolder.itemView.setClickable(false);
                     Toast.makeText(context,"SORRY INCORRECT ANSWER :(",Toast.LENGTH_SHORT).show();
                     viewHolder.itemView.setBackgroundColor(context.getResources().getColor(R.color.wrongAnswer));

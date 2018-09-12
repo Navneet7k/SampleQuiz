@@ -7,4 +7,5 @@ package navneet.com.quizrest;
 public interface OptionSelected {
     void onOptionCorrect();
     void onOptionWrong();
+    void onSectionComplete();
 }
